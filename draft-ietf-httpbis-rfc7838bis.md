@@ -1,6 +1,5 @@
 ---
 title: "HTTP Alternative Services"
-abbrev: "HTTP Alternative Services"
 docname: draft-ietf-httpbis-rfc7838bis-latest
 category: std
 
