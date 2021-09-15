@@ -1062,6 +1062,17 @@ Table of Contents
    with the types defined in Section 2.1 and Section 2.3 respectively;
    see Section 2.2 and Section 2.4 for its associated procedures.
 
+   Additionally, please register the following entry in the Hypertext
+   Transfer Protocol (HTTP) Field Name Registry:
+
+   *  Field name: Proxy-Status
+
+   *  Status: permanent
+
+   *  Specification document(s): [this document]
+
+   *  Comments:
+
 4.  Security Considerations
 
    One of the primary security concerns when using Proxy-Status is
