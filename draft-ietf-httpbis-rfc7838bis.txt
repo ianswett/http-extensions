@@ -5,8 +5,8 @@
 HTTP Working Group                                        M. Bishop, Ed.
 Internet-Draft                                       Akamai Technologies
 Intended status: Standards Track                         M. Thomson, Ed.
-Expires: 19 March 2022                                           Mozilla
-                                                       15 September 2021
+Expires: 20 March 2022                                           Mozilla
+                                                       16 September 2021
 
 
                        HTTP Alternative Services
@@ -48,7 +48,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 19 March 2022.
+   This Internet-Draft will expire on 20 March 2022.
 
 Copyright Notice
 
@@ -219,7 +219,7 @@ Table of Contents
 
    Formally, an alternative service is identified by the combination of:
 
-   *  An Application Layer Protocol Negotiation (ALPN) protocol name, as
+   *  An Application-Layer Protocol Negotiation (ALPN) protocol name, as
       per [RFC7301]
 
    *  A host, as per Section 3.2.2 of [RFC3986]
