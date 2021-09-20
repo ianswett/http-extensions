@@ -6,11 +6,11 @@ HTTP                                                        L. Chen, Ed.
 Internet-Draft                                                Google LLC
 Obsoletes: 6265 (if approved)                         S. Englehardt, Ed.
 Intended status: Standards Track                                 Mozilla
-Expires: 21 March 2022                                      M. West, Ed.
+Expires: 24 March 2022                                      M. West, Ed.
                                                               Google LLC
                                                         J. Wilander, Ed.
                                                               Apple, Inc
-                                                       17 September 2021
+                                                       20 September 2021
 
 
                 Cookies: HTTP State Management Mechanism
@@ -54,7 +54,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 21 March 2022.
+   This Internet-Draft will expire on 24 March 2022.
 
 Copyright Notice
 
@@ -1435,7 +1435,10 @@ Table of Contents
         1.  Let the domain-attribute be the attribute-value of the last
             attribute in the cookie-attribute-list with both an
             attribute-name of "Domain" and an attribute-value whose
-            length is no more than 1024 octets.
+            length is no more than 1024 octets.  (Note that a leading
+            %x2E ("."), if present, is ignored even though that
+            character is not permitted, but a trailing %x2E ("."), if
+            present, will cause the user agent to ignore the attribute.)
 
         Otherwise:
 
