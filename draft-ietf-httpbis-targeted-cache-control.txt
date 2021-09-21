@@ -5,10 +5,10 @@
 HTTP                                                            S. Ludin
 Internet-Draft                                                    Akamai
 Intended status: Standards Track                           M. Nottingham
-Expires: 24 March 2022                                            Fastly
+Expires: 25 March 2022                                            Fastly
                                                                    Y. Wu
                                                               Cloudflare
-                                                       20 September 2021
+                                                       21 September 2021
 
 
                       Targeted HTTP Cache Control
@@ -54,7 +54,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 24 March 2022.
+   This Internet-Draft will expire on 25 March 2022.
 
 Copyright Notice
 
@@ -243,13 +243,13 @@ Table of Contents
 2.3.  Interaction with HTTP Freshness
 
    HTTP caching has a single, end-to-end freshness model defined in
-   Section 4.2 of [I-D.ietf-httpbis-cache].  When additional freshness
-   mechanisms are only available to some caches along a request path
-   (for example, using targeted fields), their interactions need to be
-   carefully considered.  In particular, a targeted cache might have
-   longer freshness lifetimes available to it than other caches, causing
-   it to serve responses that appear to be prematurely (or even
-   immediately) stale to them, negatively impacting cache efficiency.
+   Section 4.2 of [HTTP-CACHING].  When additional freshness mechanisms
+   are only available to some caches along a request path (for example,
+   using targeted fields), their interactions need to be carefully
+   considered.  In particular, a targeted cache might have longer
+   freshness lifetimes available to it than other caches, causing it to
+   serve responses that appear to be prematurely (or even immediately)
+   stale to them, negatively impacting cache efficiency.
 
    For example, a response stored by a CDN cache might be served with
    the following headers:
@@ -373,13 +373,6 @@ Table of Contents
               semantics-19>.
 
    [HTTP-CACHING]
-              Fielding, R. T., Nottingham, M., and J. Reschke, "HTTP
-              Caching", Work in Progress, Internet-Draft, draft-ietf-
-              httpbis-cache-19, 12 September 2021,
-              <https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-
-              cache-19>.
-
-   [I-D.ietf-httpbis-cache]
               Fielding, R. T., Nottingham, M., and J. Reschke, "HTTP
               Caching", Work in Progress, Internet-Draft, draft-ietf-
               httpbis-cache-19, 12 September 2021,
