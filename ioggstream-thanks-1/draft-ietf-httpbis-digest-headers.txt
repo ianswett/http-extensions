@@ -1561,7 +1561,7 @@ Acknowledgements
    this specification by reporting bugs, asking smart questions,
    drafting or reviewing text, and evaluating open issues: Mike Bishop,
    Brian Campbell, Matthew Kerwin, James Manger, Tommy Pauly, Sean
-   Turner and Erik Wilde.
+   Turner, and Erik Wilde.
 
 FAQ
 
