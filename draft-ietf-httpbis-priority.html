@@ -1286,15 +1286,15 @@ code and issues list for this draft can be found at
       <h2 id="name-introduction">
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
-<p id="section-1-1">It is common for an HTTP (<span>[<a href="#RFC7230" class="xref">RFC7230</a>]</span>) resource representation to have
-relationships to one or more other resources.  Clients will often discover these
-relationships while processing a retrieved representation, leading to further
-retrieval requests.  Meanwhile, the nature of the relationship determines
-whether the client is blocked from continuing to process locally available
-resources.  For example, visual rendering of an HTML document could be blocked
-by the retrieval of a CSS file that the document refers to.  In contrast, inline
-images do not block rendering and get drawn incrementally as the chunks of the
-images arrive.<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-1">It is common for an HTTP <span>[<a href="#HTTP" class="xref">HTTP</a>]</span> resource
+representation to have relationships to one or more other resources.  Clients
+will often discover these relationships while processing a retrieved
+representation, leading to further retrieval requests.  Meanwhile, the nature of
+the relationship determines whether the client is blocked from continuing to
+process locally available resources.  For example, visual rendering of an HTML
+document could be blocked by the retrieval of a CSS file that the document
+refers to.  In contrast, inline images do not block rendering and get drawn
+incrementally as the chunks of the images arrive.<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2">To provide meaningful presentation of a document at the earliest moment, it is
 important for an HTTP server to prioritize the HTTP responses, or the chunks of
 those HTTP responses, that it sends.<a href="#section-1-2" class="pilcrow">¶</a></p>
@@ -1304,8 +1304,8 @@ of this tree represents the client's preferred relative ordering and weighted
 distribution of the bandwidth among HTTP responses. Servers could use these
 priority signals as input into prioritization decision making.<a href="#section-1-3" class="pilcrow">¶</a></p>
 <p id="section-1-4">The design and implementation of RFC 7540 stream priority was observed to have
-shortcomings, explained in <a href="#motivation" class="xref">Section 2</a>.
-(<span>[<a href="#HTTP2" class="xref">HTTP2</a>]</span>) has consequently deprecated the use of
+shortcomings, explained in <a href="#motivation" class="xref">Section 2</a>. HTTP/2
+<span>[<a href="#HTTP2" class="xref">HTTP2</a>]</span> has consequently deprecated the use of
 these stream priority signals.<a href="#section-1-4" class="pilcrow">¶</a></p>
 <p id="section-1-5">This document describes an extensible scheme for prioritizing HTTP responses
 that uses absolute values. <a href="#parameters" class="xref">Section 4</a> defines priority parameters, which are
@@ -1350,10 +1350,10 @@ particularly if one endpoint operates in ignorance of the needs of its peer.
 Priority signalling allows endpoints to communicate their own view of priority
 needs, which can be combined with other factors that are considered during the
 peer's prioritization decision making.<a href="#section-2-1" class="pilcrow">¶</a></p>
-<p id="section-2-2">RFC 7540 stream priority (<span><a href="https://rfc-editor.org/rfc/rfc7540#section-5.3" class="relref">Section 5.3</a> of [<a href="#RFC7540" class="xref">RFC7540</a>]</span>) is a complex system where
-clients signal stream dependencies and weights to describe an unbalanced tree.
-It suffered from poor deployment and interoperability and was deprecated in a
-revision of HTTP/2 (<span>[<a href="#HTTP2" class="xref">HTTP2</a>]</span>). However, in order to maintain wire
+<p id="section-2-2">RFC 7540 stream priority (see <span><a href="https://rfc-editor.org/rfc/rfc7540#section-5.3" class="relref">Section 5.3</a> of [<a href="#RFC7540" class="xref">RFC7540</a>]</span>) is a complex system
+where clients signal stream dependencies and weights to describe an unbalanced
+tree. It suffered from poor deployment and interoperability and was deprecated
+in a revision of HTTP/2 <span>[<a href="#HTTP2" class="xref">HTTP2</a>]</span>. However, in order to maintain wire
 compatibility, HTTP/2 priority signals are still mandatory to handle (see
 <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-http2bis-04#section-5.3.2" class="relref">Section 5.3.2</a> of [<a href="#HTTP2" class="xref">HTTP2</a>]</span>).<a href="#section-2-2" class="pilcrow">¶</a></p>
 <p id="section-2-3">Clients can build RFC 7540 trees with rich flexibility but experience has shown
@@ -1460,7 +1460,7 @@ single hop.  If intermediaries want to specify prioritization on a multiplexed
 HTTP connection, they SHOULD use a PRIORITY_UPDATE frame and SHOULD NOT change
 the Priority header field.<a href="#section-4-2" class="pilcrow">¶</a></p>
 <p id="section-4-3">In both cases, the set of priority parameters is encoded as a Structured Fields
-Dictionary (<span>[<a href="#STRUCTURED-FIELDS" class="xref">STRUCTURED-FIELDS</a>]</span>).<a href="#section-4-3" class="pilcrow">¶</a></p>
+Dictionary (see <span><a href="https://rfc-editor.org/rfc/rfc8941#section-3.2" class="relref">Section 3.2</a> of [<a href="#STRUCTURED-FIELDS" class="xref">STRUCTURED-FIELDS</a>]</span>).<a href="#section-4-3" class="pilcrow">¶</a></p>
 <p id="section-4-4">This document defines the urgency(<code>u</code>) and incremental(<code>i</code>) parameters. When
 receiving an HTTP request that does not carry these priority parameters, a
 server SHOULD act as if their default values were specified. Note that handling
@@ -1600,12 +1600,12 @@ Priority information from client requests and server responses to correct or
 amend the precedence to suit it (see <a href="#merging" class="xref">Section 8</a>).<a href="#section-5-1" class="pilcrow">¶</a></p>
 <p id="section-5-2">The Priority header field is an end-to-end signal of the request priority from
 the client or the response priority from the server.<a href="#section-5-2" class="pilcrow">¶</a></p>
-<p id="section-5-3">As is the ordinary case for HTTP caching (<span>[<a href="#RFC7234" class="xref">RFC7234</a>]</span>), a response with a
-Priority header field might be cached and re-used for subsequent requests.
-When an origin server generates the Priority response header field based on
-properties of an HTTP request it receives, the server is expected to control the
-cacheability or the applicability of the cached response, by using header fields
-that control the caching behavior (e.g., Cache-Control, Vary).<a href="#section-5-3" class="pilcrow">¶</a></p>
+<p id="section-5-3">As is the ordinary case for HTTP caching <span>[<a href="#CACHING" class="xref">CACHING</a>]</span>, a
+response with a Priority header field might be cached and re-used for subsequent
+requests. When an origin server generates the Priority response header field
+based on properties of an HTTP request it receives, the server is expected to
+control the cacheability or the applicability of the cached response, by using
+header fields that control the caching behavior (e.g., Cache-Control, Vary).<a href="#section-5-3" class="pilcrow">¶</a></p>
 <p id="section-5-4">An endpoint that fails to parse the Priority header field SHOULD use default
 parameter values.<a href="#section-5-4" class="pilcrow">¶</a></p>
 </section>
@@ -1630,8 +1630,8 @@ reprioritization.<a href="#section-6-1" class="pilcrow">¶</a></p>
       <h2 id="name-the-priority_update-frame">
 <a href="#section-7" class="section-number selfRef">7. </a><a href="#name-the-priority_update-frame" class="section-name selfRef">The PRIORITY_UPDATE Frame</a>
       </h2>
-<p id="section-7-1">This document specifies a new PRIORITY_UPDATE frame for HTTP/2 (<span>[<a href="#HTTP2" class="xref">HTTP2</a>]</span>)
-and HTTP/3 (<span>[<a href="#HTTP3" class="xref">HTTP3</a>]</span>). It carries priority parameters and
+<p id="section-7-1">This document specifies a new PRIORITY_UPDATE frame for HTTP/2 <span>[<a href="#HTTP2" class="xref">HTTP2</a>]</span>
+and HTTP/3 <span>[<a href="#HTTP3" class="xref">HTTP3</a>]</span>. It carries priority parameters and
 references the target of the prioritization based on a version-specific
 identifier. In HTTP/2, this identifier is the Stream ID; in HTTP/3, the
 identifier is either the Stream ID or Push ID. Unlike the Priority header field,
@@ -1667,9 +1667,10 @@ sent, storing only the most recently received frame limits resource commitment.<
 initial priority of a response, or to reprioritize a response or push stream. It
 carries the stream ID of the response and the priority in ASCII text, using the
 same representation as the Priority header field value.<a href="#section-7.1-1" class="pilcrow">¶</a></p>
-<p id="section-7.1-2">The Stream Identifier field (<span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-http2bis-04#section-5.1.1" class="relref">Section 5.1.1</a> of [<a href="#HTTP2" class="xref">HTTP2</a>]</span>) in the PRIORITY_UPDATE
-frame header MUST be zero (0x0). Receiving a PRIORITY_UPDATE frame with a field
-of any other value MUST be treated as a connection error of type PROTOCOL_ERROR.<a href="#section-7.1-2" class="pilcrow">¶</a></p>
+<p id="section-7.1-2">The Stream Identifier field (see <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-http2bis-04#section-5.1.1" class="relref">Section 5.1.1</a> of [<a href="#HTTP2" class="xref">HTTP2</a>]</span>) in the
+PRIORITY_UPDATE frame header MUST be zero (0x0). Receiving a PRIORITY_UPDATE
+frame with a field of any other value MUST be treated as a connection error of
+type PROTOCOL_ERROR.<a href="#section-7.1-2" class="pilcrow">¶</a></p>
 <span id="name-http-2-priority_update-frame"></span><div id="fig-h2-reprioritization-frame">
 <figure id="figure-1">
           <div id="section-7.1-3.1">
@@ -1754,7 +1755,7 @@ Priority header field value. PRIORITY_UPDATE with a frame type of 0xF0700 is
 used for request streams, while PRIORITY_UPDATE with a frame type of 0xF0701 is
 used for push streams.<a href="#section-7.2-1" class="pilcrow">¶</a></p>
 <p id="section-7.2-2">The PRIORITY_UPDATE frame MUST be sent on the client control stream
-(<span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-quic-http-34#section-6.2.1" class="relref">Section 6.2.1</a> of [<a href="#HTTP3" class="xref">HTTP3</a>]</span>). Receiving a PRIORITY_UPDATE frame on a
+(see <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-quic-http-34#section-6.2.1" class="relref">Section 6.2.1</a> of [<a href="#HTTP3" class="xref">HTTP3</a>]</span>). Receiving a PRIORITY_UPDATE frame on a
 stream other than the client control stream MUST be treated as a connection
 error of type H3_FRAME_UNEXPECTED.<a href="#section-7.2-2" class="pilcrow">¶</a></p>
 <span id="name-http-3-priority_update-frame"></span><div id="fig-h3-reprioritization-frame">
@@ -2028,9 +2029,9 @@ the prioritization scheme it implements.<a href="#section-13.1-3" class="pilcrow
 configuration, or by consulting if that request contains one of the following
 header fields:<a href="#section-13.1-4" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-13.1-5.1">Forwarded, X-Forwarded-For (<span>[<a href="#RFC7239" class="xref">RFC7239</a>]</span>)<a href="#section-13.1-5.1" class="pilcrow">¶</a>
+<li class="normal" id="section-13.1-5.1">Forwarded <span>[<a href="#FORWARDED" class="xref">FORWARDED</a>]</span>, X-Forwarded-For<a href="#section-13.1-5.1" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-13.1-5.2">Via (Section 5.7.1 of <span>[<a href="#RFC7230" class="xref">RFC7230</a>]</span>)<a href="#section-13.1-5.2" class="pilcrow">¶</a>
+          <li class="normal" id="section-13.1-5.2">Via (see <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-19#section-7.6.3" class="relref">Section 7.6.3</a> of [<a href="#HTTP" class="xref">HTTP</a>]</span>)<a href="#section-13.1-5.2" class="pilcrow">¶</a>
 </li>
         </ul>
 </section>
@@ -2256,6 +2257,10 @@ defined in <a href="#parameters" class="xref">Section 4</a>; see <a href="#regis
 <a href="#section-17.1" class="section-number selfRef">17.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
         </h3>
 <dl class="references">
+<dt id="HTTP">[HTTP]</dt>
+        <dd>
+<span class="refAuthor">Fielding, R. T.</span>, <span class="refAuthor">Nottingham, M.</span>, and <span class="refAuthor">J. Reschke</span>, <span class="refTitle">"HTTP Semantics"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-httpbis-semantics-19</span>, <time datetime="2021-09-12" class="refDate">12 September 2021</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-19">https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-19</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="HTTP2">[HTTP2]</dt>
         <dd>
 <span class="refAuthor">Thomson, M.</span> and <span class="refAuthor">C. Benfield</span>, <span class="refTitle">"Hypertext Transfer Protocol Version 2 (HTTP/2)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-httpbis-http2bis-04</span>, <time datetime="2021-09-23" class="refDate">23 September 2021</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-http2bis-04">https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-http2bis-04</a>&gt;</span>. </dd>
@@ -2272,10 +2277,6 @@ defined in <a href="#parameters" class="xref">Section 4</a>; see <a href="#regis
         <dd>
 <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc2119">https://datatracker.ietf.org/doc/html/rfc2119</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="RFC7230">[RFC7230]</dt>
-        <dd>
-<span class="refAuthor">Fielding, R., Ed.</span> and <span class="refAuthor">J. Reschke, Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing"</span>, <span class="seriesInfo">RFC 7230</span>, <span class="seriesInfo">DOI 10.17487/RFC7230</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc7230">https://datatracker.ietf.org/doc/html/rfc7230</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="RFC8126">[RFC8126]</dt>
         <dd>
 <span class="refAuthor">Cotton, M.</span>, <span class="refAuthor">Leiba, B.</span>, and <span class="refAuthor">T. Narten</span>, <span class="refTitle">"Guidelines for Writing an IANA Considerations Section in RFCs"</span>, <span class="seriesInfo">BCP 26</span>, <span class="seriesInfo">RFC 8126</span>, <span class="seriesInfo">DOI 10.17487/RFC8126</span>, <time datetime="2017-06" class="refDate">June 2017</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc8126">https://datatracker.ietf.org/doc/html/rfc8126</a>&gt;</span>. </dd>
@@ -2291,9 +2292,17 @@ defined in <a href="#parameters" class="xref">Section 4</a>; see <a href="#regis
 <a href="#section-17.2" class="section-number selfRef">17.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
+<dt id="CACHING">[CACHING]</dt>
+        <dd>
+<span class="refAuthor">Fielding, R. T.</span>, <span class="refAuthor">Nottingham, M.</span>, and <span class="refAuthor">J. Reschke</span>, <span class="refTitle">"HTTP Caching"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-httpbis-cache-19</span>, <time datetime="2021-09-12" class="refDate">12 September 2021</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-cache-19">https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-cache-19</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="CVE-2019-9513">[CVE-2019-9513]</dt>
         <dd>
 <span class="refAuthor">Common Vulnerabilities and Exposures</span>, <span class="refTitle">"CVE-2019-9513"</span>, <time datetime="2019-03-01" class="refDate">1 March 2019</time>, <span>&lt;<a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9513">https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9513</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="FORWARDED">[FORWARDED]</dt>
+        <dd>
+<span class="refAuthor">Petersson, A.</span> and <span class="refAuthor">M. Nilsson</span>, <span class="refTitle">"Forwarded HTTP Extension"</span>, <span class="seriesInfo">RFC 7239</span>, <span class="seriesInfo">DOI 10.17487/RFC7239</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc7239">https://datatracker.ietf.org/doc/html/rfc7239</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.lassey-priority-setting">[I-D.lassey-priority-setting]</dt>
         <dd>
@@ -2306,14 +2315,6 @@ defined in <a href="#parameters" class="xref">Section 4</a>; see <a href="#regis
 <dt id="RFC3864">[RFC3864]</dt>
         <dd>
 <span class="refAuthor">Klyne, G.</span>, <span class="refAuthor">Nottingham, M.</span>, and <span class="refAuthor">J. Mogul</span>, <span class="refTitle">"Registration Procedures for Message Header Fields"</span>, <span class="seriesInfo">BCP 90</span>, <span class="seriesInfo">RFC 3864</span>, <span class="seriesInfo">DOI 10.17487/RFC3864</span>, <time datetime="2004-09" class="refDate">September 2004</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc3864">https://datatracker.ietf.org/doc/html/rfc3864</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="RFC7234">[RFC7234]</dt>
-        <dd>
-<span class="refAuthor">Fielding, R., Ed.</span>, <span class="refAuthor">Nottingham, M., Ed.</span>, and <span class="refAuthor">J. Reschke, Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol (HTTP/1.1): Caching"</span>, <span class="seriesInfo">RFC 7234</span>, <span class="seriesInfo">DOI 10.17487/RFC7234</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc7234">https://datatracker.ietf.org/doc/html/rfc7234</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="RFC7239">[RFC7239]</dt>
-        <dd>
-<span class="refAuthor">Petersson, A.</span> and <span class="refAuthor">M. Nilsson</span>, <span class="refTitle">"Forwarded HTTP Extension"</span>, <span class="seriesInfo">RFC 7239</span>, <span class="seriesInfo">DOI 10.17487/RFC7239</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc7239">https://datatracker.ietf.org/doc/html/rfc7239</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC7540">[RFC7540]</dt>
         <dd>

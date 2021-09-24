@@ -119,7 +119,7 @@ Table of Contents
 
 1.  Introduction
 
-   It is common for an HTTP ([RFC7230]) resource representation to have
+   It is common for an HTTP [HTTP] resource representation to have
    relationships to one or more other resources.  Clients will often
    discover these relationships while processing a retrieved
    representation, leading to further retrieval requests.  Meanwhile,
@@ -142,8 +142,9 @@ Table of Contents
    prioritization decision making.
 
    The design and implementation of RFC 7540 stream priority was
-   observed to have shortcomings, explained in Section 2.  ([HTTP2]) has
-   consequently deprecated the use of these stream priority signals.
+   observed to have shortcomings, explained in Section 2.  HTTP/2
+   [HTTP2] has consequently deprecated the use of these stream priority
+   signals.
 
    This document describes an extensible scheme for prioritizing HTTP
    responses that uses absolute values.  Section 4 defines priority
@@ -189,13 +190,12 @@ Table of Contents
    be combined with other factors that are considered during the peer's
    prioritization decision making.
 
-   RFC 7540 stream priority (Section 5.3 of [RFC7540]) is a complex
+   RFC 7540 stream priority (see Section 5.3 of [RFC7540]) is a complex
    system where clients signal stream dependencies and weights to
    describe an unbalanced tree.  It suffered from poor deployment and
-   interoperability and was deprecated in a revision of HTTP/2
-   ([HTTP2]).  However, in order to maintain wire compatibility, HTTP/2
-   priority signals are still mandatory to handle (see Section 5.3.2 of
-   [HTTP2]).
+   interoperability and was deprecated in a revision of HTTP/2 [HTTP2].
+   However, in order to maintain wire compatibility, HTTP/2 priority
+   signals are still mandatory to handle (see Section 5.3.2 of [HTTP2]).
 
    Clients can build RFC 7540 trees with rich flexibility but experience
    has shown this is rarely exercised.  Instead they tend to choose a
@@ -317,7 +317,8 @@ Table of Contents
    field.
 
    In both cases, the set of priority parameters is encoded as a
-   Structured Fields Dictionary ([STRUCTURED-FIELDS]).
+   Structured Fields Dictionary (see Section 3.2 of
+   [STRUCTURED-FIELDS]).
 
    This document defines the urgency(u) and incremental(i) parameters.
    When receiving an HTTP request that does not carry these priority
@@ -456,8 +457,8 @@ Table of Contents
    The Priority header field is an end-to-end signal of the request
    priority from the client or the response priority from the server.
 
-   As is the ordinary case for HTTP caching ([RFC7234]), a response with
-   a Priority header field might be cached and re-used for subsequent
+   As is the ordinary case for HTTP caching [CACHING], a response with a
+   Priority header field might be cached and re-used for subsequent
    requests.  When an origin server generates the Priority response
    header field based on properties of an HTTP request it receives, the
    server is expected to control the cacheability or the applicability
@@ -482,7 +483,7 @@ Table of Contents
 7.  The PRIORITY_UPDATE Frame
 
    This document specifies a new PRIORITY_UPDATE frame for HTTP/2
-   ([HTTP2]) and HTTP/3 ([HTTP3]).  It carries priority parameters and
+   [HTTP2] and HTTP/3 [HTTP3].  It carries priority parameters and
    references the target of the prioritization based on a version-
    specific identifier.  In HTTP/2, this identifier is the Stream ID; in
    HTTP/3, the identifier is either the Stream ID or Push ID.  Unlike
@@ -527,7 +528,7 @@ Table of Contents
    and the priority in ASCII text, using the same representation as the
    Priority header field value.
 
-   The Stream Identifier field (Section 5.1.1 of [HTTP2]) in the
+   The Stream Identifier field (see Section 5.1.1 of [HTTP2]) in the
    PRIORITY_UPDATE frame header MUST be zero (0x0).  Receiving a
    PRIORITY_UPDATE frame with a field of any other value MUST be treated
    as a connection error of type PROTOCOL_ERROR.
@@ -603,8 +604,8 @@ Table of Contents
    0xF0701 is used for push streams.
 
    The PRIORITY_UPDATE frame MUST be sent on the client control stream
-   (Section 6.2.1 of [HTTP3]).  Receiving a PRIORITY_UPDATE frame on a
-   stream other than the client control stream MUST be treated as a
+   (see Section 6.2.1 of [HTTP3]).  Receiving a PRIORITY_UPDATE frame on
+   a stream other than the client control stream MUST be treated as a
    connection error of type H3_FRAME_UNEXPECTED.
 
    HTTP/3 PRIORITY_UPDATE Frame {
@@ -870,9 +871,9 @@ Table of Contents
    configuration, or by consulting if that request contains one of the
    following header fields:
 
-   *  Forwarded, X-Forwarded-For ([RFC7239])
+   *  Forwarded [FORWARDED], X-Forwarded-For
 
-   *  Via (Section 5.7.1 of [RFC7230])
+   *  Via (see Section 7.6.3 of [HTTP])
 
 13.2.  HTTP/1.x Back Ends
 
@@ -1016,6 +1017,12 @@ Table of Contents
 
 17.1.  Normative References
 
+   [HTTP]     Fielding, R. T., Nottingham, M., and J. Reschke, "HTTP
+              Semantics", Work in Progress, Internet-Draft, draft-ietf-
+              httpbis-semantics-19, 12 September 2021,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-
+              semantics-19>.
+
    [HTTP2]    Thomson, M. and C. Benfield, "Hypertext Transfer Protocol
               Version 2 (HTTP/2)", Work in Progress, Internet-Draft,
               draft-ietf-httpbis-http2bis-04, 23 September 2021,
@@ -1038,11 +1045,6 @@ Table of Contents
               DOI 10.17487/RFC2119, March 1997,
               <https://datatracker.ietf.org/doc/html/rfc2119>.
 
-   [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
-              Protocol (HTTP/1.1): Message Syntax and Routing",
-              RFC 7230, DOI 10.17487/RFC7230, June 2014,
-              <https://datatracker.ietf.org/doc/html/rfc7230>.
-
    [RFC8126]  Cotton, M., Leiba, B., and T. Narten, "Guidelines for
               Writing an IANA Considerations Section in RFCs", BCP 26,
               RFC 8126, DOI 10.17487/RFC8126, June 2017,
@@ -1055,10 +1057,21 @@ Table of Contents
 
 17.2.  Informative References
 
+   [CACHING]  Fielding, R. T., Nottingham, M., and J. Reschke, "HTTP
+              Caching", Work in Progress, Internet-Draft, draft-ietf-
+              httpbis-cache-19, 12 September 2021,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-
+              cache-19>.
+
    [CVE-2019-9513]
               Common Vulnerabilities and Exposures, "CVE-2019-9513", 1
               March 2019, <https://cve.mitre.org/cgi-bin/
               cvename.cgi?name=CVE-2019-9513>.
+
+   [FORWARDED]
+              Petersson, A. and M. Nilsson, "Forwarded HTTP Extension",
+              RFC 7239, DOI 10.17487/RFC7239, June 2014,
+              <https://datatracker.ietf.org/doc/html/rfc7239>.
 
    [I-D.lassey-priority-setting]
               Lassey, B. and L. Pardue, "Declaring Support for HTTP/2
@@ -1076,15 +1089,6 @@ Table of Contents
               Procedures for Message Header Fields", BCP 90, RFC 3864,
               DOI 10.17487/RFC3864, September 2004,
               <https://datatracker.ietf.org/doc/html/rfc3864>.
-
-   [RFC7234]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
-              Ed., "Hypertext Transfer Protocol (HTTP/1.1): Caching",
-              RFC 7234, DOI 10.17487/RFC7234, June 2014,
-              <https://datatracker.ietf.org/doc/html/rfc7234>.
-
-   [RFC7239]  Petersson, A. and M. Nilsson, "Forwarded HTTP Extension",
-              RFC 7239, DOI 10.17487/RFC7239, June 2014,
-              <https://datatracker.ietf.org/doc/html/rfc7239>.
 
    [RFC7540]  Belshe, M., Peon, R., and M. Thomson, Ed., "Hypertext
               Transfer Protocol Version 2 (HTTP/2)", RFC 7540,
