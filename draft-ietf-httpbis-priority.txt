@@ -5,8 +5,8 @@
 HTTP                                                              K. Oku
 Internet-Draft                                                    Fastly
 Intended status: Standards Track                               L. Pardue
-Expires: 26 March 2022                                        Cloudflare
-                                                       22 September 2021
+Expires: 28 March 2022                                        Cloudflare
+                                                       24 September 2021
 
 
                Extensible Prioritization Scheme for HTTP
@@ -55,7 +55,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 26 March 2022.
+   This Internet-Draft will expire on 28 March 2022.
 
 Copyright Notice
 
@@ -302,18 +302,18 @@ Table of Contents
    In both cases, the set of priority parameters is encoded as a
    Structured Fields Dictionary ([STRUCTURED-FIELDS]).
 
-   This document defines the urgency("u") and incremental("i")
-   parameters.  When receiving an HTTP request that does not carry these
-   priority parameters, a server SHOULD act as if their default values
-   were specified.  Note that handling of omitted parameters is
-   different when processing an HTTP response; see Section 8.
+   This document defines the urgency(u) and incremental(i) parameters.
+   When receiving an HTTP request that does not carry these priority
+   parameters, a server SHOULD act as if their default values were
+   specified.  Note that handling of omitted parameters is different
+   when processing an HTTP response; see Section 8.
 
    Unknown parameters, parameters with out-of-range values or values of
    unexpected types MUST be ignored.
 
 4.1.  Urgency
 
-   The urgency parameter ("u") takes an integer between 0 and 7, in
+   The urgency parameter (u) takes an integer between 0 and 7, in
    descending order of priority.  This range provides sufficient
    granularity for prioritizing responses for ordinary web browsing, at
    minimal complexity.
@@ -326,7 +326,7 @@ Table of Contents
    the higher the precedence.
 
    The following example shows a request for a CSS file with the urgency
-   set to "0":
+   set to 0:
 
    :method = GET
    :scheme = https
@@ -345,11 +345,11 @@ Table of Contents
 
 4.2.  Incremental
 
-   The incremental parameter ("i") takes an sf-boolean as the value that
+   The incremental parameter (i) takes an sf-boolean as the value that
    indicates if an HTTP response can be processed incrementally, i.e.
    provide some meaningful output as chunks of the response arrive.
 
-   The default value of the incremental parameter is false ("0").
+   The default value of the incremental parameter is false (0).
 
    A server might distribute the bandwidth of a connection between
    incremental responses that share the same urgency, hoping that
@@ -364,8 +364,7 @@ Table of Contents
    best strategy.
 
    The following example shows a request for a JPEG file with the
-   urgency parameter set to "5" and the incremental parameter set to
-   "true".
+   urgency parameter set to 5 and the incremental parameter set to true.
 
    :method = GET
    :scheme = https
@@ -390,7 +389,7 @@ Table of Contents
    levels.
 
    Alternatively, the urgency can be augmented.  For example, a
-   graphical user agent could send a "visible" parameter to indicate if
+   graphical user agent could send a visible parameter to indicate if
    the resource being requested is within the viewport.
 
    Generic parameters are preferred over vendor-specific, application-
@@ -456,10 +455,10 @@ Table of Contents
    After a client sends a request, it may be beneficial to change the
    priority of the response.  As an example, a web browser might issue a
    prefetch request for a JavaScript file with the urgency parameter of
-   the Priority request header field set to "u=7" (background).  Then,
+   the Priority request header field set to u=7 (background).  Then,
    when the user navigates to a page which references the new JavaScript
    file, while the prefetch is in progress, the browser would send a
-   reprioritization signal with the priority field value set to "u=0".
+   reprioritization signal with the priority field value set to u=0.
    The PRIORITY_UPDATE frame (Section 7) can be used for such
    reprioritization.
 
@@ -646,8 +645,8 @@ Table of Contents
    default values (see Section 4).
 
    As a non-normative example, when the client sends an HTTP request
-   with the urgency parameter set to "5" and the incremental parameter
-   set to "true"
+   with the urgency parameter set to 5 and the incremental parameter set
+   to true
 
    :method = GET
    :scheme = https
@@ -661,11 +660,11 @@ Table of Contents
    content-type = image/png
    priority = u=1
 
-   the intermediary might alter its understanding of the urgency from
-   "5" to "1", because it prefers the server-provided value over the
-   client's.  The incremental value continues to be "true", the value
-   specified by the client, as the server did not specify the
-   incremental("i") parameter.
+   the intermediary might alter its understanding of the urgency from 5
+   to 1, because it prefers the server-provided value over the client's.
+   The incremental value continues to be true, the value specified by
+   the client, as the server did not specify the incremental(i)
+   parameter.
 
 9.  Client Scheduling
 
@@ -771,7 +770,7 @@ Table of Contents
    When a request stream carries the CONNECT method, the scheduling
    guidance in this document applies to the frames on the stream.  A
    client that issues multiple CONNECT requests can set the incremental
-   parameter to "true", servers that implement the recommendation in
+   parameter to true, servers that implement the recommendation in
    Section 10 will schedule these fairly.
 
 12.  Retransmission Scheduling
@@ -1150,7 +1149,7 @@ B.5.  Since draft-kazuho-httpbis-priority-04
 
 B.6.  Since draft-kazuho-httpbis-priority-03
 
-   *  Changed numbering from "[-1,6]" to "[0,7]" (#78)
+   *  Changed numbering from [-1,6] to [0,7] (#78)
 
    *  Replaced priority scheme negotiation with HTTP/2 priority
       deprecation (#100)

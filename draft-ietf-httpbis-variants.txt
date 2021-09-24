@@ -4,9 +4,9 @@
 
 HTTP                                                       M. Nottingham
 Internet-Draft                                                    Fastly
-Updates: 7234 (if approved)                            22 September 2021
+Updates: 7234 (if approved)                            24 September 2021
 Intended status: Standards Track                                        
-Expires: 26 March 2022
+Expires: 28 March 2022
 
 
                       HTTP Representation Variants
@@ -53,7 +53,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 26 March 2022.
+   This Internet-Draft will expire on 28 March 2022.
 
 Copyright Notice
 
@@ -993,14 +993,14 @@ A.4.  Cookie
    3.  Return cookies-available.
 
    A simple example is allowing a page designed for users that aren't
-   logged in (denoted by the "logged_in" cookie-name) to be cached:
+   logged in (denoted by the logged_in cookie-name) to be cached:
 
    Variants: Cookie=(logged_in)
    Variant-Key: (0)
    Vary: Cookie
 
    Here, a cache that implements Variants will only use this response to
-   satisfy requests with "Cookie: logged_in=0".  Caches that don't
+   satisfy requests with Cookie: logged_in=0.  Caches that don't
    implement Variants will vary the response on all Cookie headers.
 
    Or, consider this example:
@@ -1009,9 +1009,9 @@ A.4.  Cookie
    Variant-Key: (silver), ("bronze")
    Vary: Cookie
 
-   Here, the "user_priority" cookie-name allows requests from "gold"
-   users to be separated from "silver" and "bronze" ones; this response
-   is only served to the latter two.
+   Here, the user_priority cookie-name allows requests from "gold" users
+   to be separated from "silver" and "bronze" ones; this response is
+   only served to the latter two.
 
    It is possible to target a response to a single user; for example:
 
@@ -1019,7 +1019,7 @@ A.4.  Cookie
    Variant-Key: (some_person)
    Vary: Cookie
 
-   Here, only the "some_person" "user_id" will have this response served
+   Here, only the "some_person" user_id will have this response served
    to them again.
 
    Note that if more than one cookie-name serves as a cache key, they'll

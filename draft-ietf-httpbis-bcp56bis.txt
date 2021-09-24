@@ -3,10 +3,10 @@
 
 
 HTTP                                                       M. Nottingham
-Internet-Draft                                         22 September 2021
+Internet-Draft                                         24 September 2021
 Obsoletes: 3205 (if approved)                                           
 Intended status: Best Current Practice                                  
-Expires: 26 March 2022
+Expires: 28 March 2022
 
 
                       Building Protocols with HTTP
@@ -53,7 +53,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 26 March 2022.
+   This Internet-Draft will expire on 28 March 2022.
 
 Copyright Notice
 
@@ -272,7 +272,7 @@ Table of Contents
    A `POST` request MUST result in a `201 Created` response.
 
    This forms an expectation in the client that the response will always
-   be "201 Created", when in fact there are a number of reasons why the
+   be 201 Created, when in fact there are a number of reasons why the
    status code might differ in a real deployment; for example, there
    might be a proxy that requires authentication, or a server-side
    error, or a redirection.  If the client does not anticipate this, the
@@ -561,7 +561,7 @@ Table of Contents
       to forward the request.
 
    *  Because URLs occur in HTTP artefacts commonly, often being
-      generated automatically (e.g., in the "Location" response header
+      generated automatically (e.g., in the Location response header
       field), it can be difficult to assure that the new scheme is used
       consistently.
 
@@ -751,10 +751,10 @@ Table of Contents
    Because the set of registered HTTP status codes can expand,
    applications using HTTP should explicitly point out that clients
    ought to be able to handle all applicable status codes gracefully
-   (i.e., falling back to the generic "n00" semantics of a given status
-   code; e.g., "499" can be safely handled as "400" by clients that
-   don't recognise it).  This is preferable to creating a "laundry list"
-   of potential status codes, since such a list won't be complete in the
+   (i.e., falling back to the generic n00 semantics of a given status
+   code; e.g., 499 can be safely handled as 400 by clients that don't
+   recognise it).  This is preferable to creating a "laundry list" of
+   potential status codes, since such a list won't be complete in the
    foreseeable future.
 
    Applications using HTTP MUST NOT re-specify the semantics of HTTP
@@ -881,7 +881,7 @@ Table of Contents
    The semantics of existing HTTP header fields MUST NOT be re-defined
    without updating their registration or defining an extension to them
    (if allowed).  For example, an application using HTTP cannot specify
-   that the "Location" header field has a special meaning in a certain
+   that the Location header field has a special meaning in a certain
    context.
 
    See Section 4.9 for the interaction between header fields and HTTP
@@ -1426,9 +1426,9 @@ Table of Contents
 
    [HTTP2]    Thomson, M. and C. Benfield, "Hypertext Transfer Protocol
               Version 2 (HTTP/2)", Work in Progress, Internet-Draft,
-              draft-ietf-httpbis-http2bis-03, 12 July 2021,
+              draft-ietf-httpbis-http2bis-04, 23 September 2021,
               <https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-
-              http2bis-03>.
+              http2bis-04>.
 
    [HTTP3]    Bishop, M., "Hypertext Transfer Protocol Version 3
               (HTTP/3)", Work in Progress, Internet-Draft, draft-ietf-

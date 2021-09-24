@@ -6,11 +6,11 @@ HTTP                                                        L. Chen, Ed.
 Internet-Draft                                                Google LLC
 Obsoletes: 6265 (if approved)                         S. Englehardt, Ed.
 Intended status: Standards Track                                 Mozilla
-Expires: 26 March 2022                                      M. West, Ed.
+Expires: 28 March 2022                                      M. West, Ed.
                                                               Google LLC
                                                         J. Wilander, Ed.
                                                               Apple, Inc
-                                                       22 September 2021
+                                                       24 September 2021
 
 
                 Cookies: HTTP State Management Mechanism
@@ -54,7 +54,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 26 March 2022.
+   This Internet-Draft will expire on 28 March 2022.
 
 Copyright Notice
 
@@ -288,15 +288,15 @@ Table of Contents
    and the "the same" matching algorithm for origins are defined in
    [RFC6454].
 
-   "Safe" HTTP methods include "GET", "HEAD", "OPTIONS", and "TRACE", as
-   defined in Section 9.2.1 of [HTTPSEM].
+   "Safe" HTTP methods include GET, HEAD, OPTIONS, and TRACE, as defined
+   in Section 9.2.1 of [HTTPSEM].
 
    A domain's "public suffix" is the portion of a domain that is
    controlled by a public registry, such as "com", "co.uk", and
    "pvt.k12.wy.us".  A domain's "registrable domain" is the domain's
    public suffix plus the label to its left.  That is, for
-   "https://www.site.example", the public suffix is "example", and the
-   registrable domain is "site.example".  Whenever possible, user agents
+   https://www.site.example, the public suffix is example, and the
+   registrable domain is site.example.  Whenever possible, user agents
    SHOULD use an up-to-date public suffix list, such as the one
    maintained by the Mozilla project at [PSL].
 
@@ -628,7 +628,7 @@ Table of Contents
    The "SameSite" attribute limits the scope of the cookie such that it
    will only be attached to requests if those requests are same-site, as
    defined by the algorithm in Section 5.2.  For example, requests for
-   "https://site.example/sekrit-image" will attach same-site cookies if
+   https://site.example/sekrit-image will attach same-site cookies if
    and only if initiated from a context whose "site for cookies" is an
    origin with a scheme and registered domain of "https" and
    "site.example" respectively.
@@ -664,16 +664,15 @@ Table of Contents
 4.1.3.1.  The "__Secure-" Prefix
 
    If a cookie's name begins with a case-sensitive match for the string
-   "__Secure-", then the cookie will have been set with a "Secure"
+   __Secure-, then the cookie will have been set with a Secure
    attribute.
 
-   For example, the following "Set-Cookie" header field would be
-   rejected by a conformant user agent, as it does not have a "Secure"
-   attribute.
+   For example, the following Set-Cookie header field would be rejected
+   by a conformant user agent, as it does not have a Secure attribute.
 
    Set-Cookie: __Secure-SID=12345; Domain=site.example
 
-   Whereas the following "Set-Cookie" header field would be accepted if
+   Whereas the following Set-Cookie header field would be accepted if
    set from a secure origin (e.g. "https://site.example/"), and rejected
    otherwise:
 
@@ -682,20 +681,19 @@ Table of Contents
 4.1.3.2.  The "__Host-" Prefix
 
    If a cookie's name begins with a case-sensitive match for the string
-   "__Host-", then the cookie will have been set with a "Secure"
-   attribute, a "Path" attribute with a value of "/", and no "Domain"
-   attribute.
+   __Host-, then the cookie will have been set with a Secure attribute,
+   a Path attribute with a value of /, and no Domain attribute.
 
    This combination yields a cookie that hews as closely as a cookie can
-   to treating the origin as a security boundary.  The lack of a
-   "Domain" attribute ensures that the cookie's "host-only-flag" is
-   true, locking the cookie to a particular host, rather than allowing
-   it to span subdomains.  Setting the "Path" to "/" means that the
-   cookie is effective for the entire host, and won't be overridden for
-   specific paths.  The "Secure" attribute ensures that the cookie is
-   unaltered by non-secure origins, and won't span protocols.
+   to treating the origin as a security boundary.  The lack of a Domain
+   attribute ensures that the cookie's host-only-flag is true, locking
+   the cookie to a particular host, rather than allowing it to span
+   subdomains.  Setting the Path to / means that the cookie is effective
+   for the entire host, and won't be overridden for specific paths.  The
+   Secure attribute ensures that the cookie is unaltered by non-secure
+   origins, and won't span protocols.
 
-   Ports are the only piece of the origin model that "__Host-" cookies
+   Ports are the only piece of the origin model that __Host- cookies
    continue to ignore.
 
    For example, the following cookies would always be rejected:
@@ -968,29 +966,29 @@ Table of Contents
    of the document's ancestor documents' origins.  Otherwise its "site
    for cookies" is an origin set to an opaque origin.
 
-   Given a Document ("document"), the following algorithm returns its
+   Given a Document (document), the following algorithm returns its
    "site for cookies":
 
-   1.  Let "top-document" be the active document in "document"'s
-       browsing context's top-level browsing context.
+   1.  Let top-document be the active document in document's browsing
+       context's top-level browsing context.
 
-   2.  Let "top-origin" be the origin of "top-document"'s URI if "top-
-       document"'s sandboxed origin browsing context flag is set, and
-       "top-document"'s origin otherwise.
+   2.  Let top-origin be the origin of top-document's URI if top-
+       document's sandboxed origin browsing context flag is set, and
+       top-document's origin otherwise.
 
-   3.  Let "documents" be a list containing "document" and each of
-       "document"'s ancestor browsing contexts' active documents.
+   3.  Let documents be a list containing document and each of
+       document's ancestor browsing contexts' active documents.
 
-   4.  For each "item" in "documents":
+   4.  For each item in documents:
 
-       1.  Let "origin" be the origin of "item"'s URI if "item"'s
-           sandboxed origin browsing context flag is set, and "item"'s
-           origin otherwise.
+       1.  Let origin be the origin of item's URI if item's sandboxed
+           origin browsing context flag is set, and item's origin
+           otherwise.
 
-       2.  If "origin" is not same-site with "top-origin", return an
-           origin set to an opaque origin.
+       2.  If origin is not same-site with top-origin, return an origin
+           set to an opaque origin.
 
-   5.  Return "top-origin".
+   5.  Return top-origin.
 
 5.2.2.  Worker-based requests
 
@@ -1009,8 +1007,8 @@ Table of Contents
 
    Dedicated workers are simple, as each dedicated worker is bound to
    one and only one document.  Requests generated from a dedicated
-   worker (via "importScripts", "XMLHttpRequest", "fetch()", etc) define
-   their "site for cookies" as that document's "site for cookies".
+   worker (via importScripts, XMLHttpRequest, fetch(), etc) define their
+   "site for cookies" as that document's "site for cookies".
 
    Shared workers may be bound to multiple documents at once.  As it is
    quite possible for those documents to have distinct "site for
@@ -1019,20 +1017,20 @@ Table of Contents
    site with the worker's origin, and the worker's origin in cases where
    the values agree.
 
-   Given a WorkerGlobalScope ("worker"), the following algorithm returns
+   Given a WorkerGlobalScope (worker), the following algorithm returns
    its "site for cookies":
 
-   1.  Let "site" be "worker"'s origin.
+   1.  Let site be worker's origin.
 
-   2.  For each "document" in "worker"'s Documents:
+   2.  For each document in worker's Documents:
 
-       1.  Let "document-site" be "document"'s "site for cookies" (as
+       1.  Let document-site be document's "site for cookies" (as
            defined in Section 5.2.1).
 
-       2.  If "document-site" is not same-site with "site", return an
-           origin set to an opaque origin.
+       2.  If document-site is not same-site with site, return an origin
+           set to an opaque origin.
 
-   3.  Return "site".
+   3.  Return site.
 
 5.2.2.2.  Service Workers
 
@@ -1046,14 +1044,14 @@ Table of Contents
    be those defined in Section 5.2.1 and Section 5.2.2.1
 
    Requests which are initiated by the Service Worker itself (via a
-   direct call to "fetch()", for instance), on the other hand, will have
-   a client which is a ServiceWorkerGlobalScope.  Its "site for cookies"
+   direct call to fetch(), for instance), on the other hand, will have a
+   client which is a ServiceWorkerGlobalScope.  Its "site for cookies"
    will be the Service Worker's URI's origin.
 
-   Given a ServiceWorkerGlobalScope ("worker"), the following algorithm
+   Given a ServiceWorkerGlobalScope (worker), the following algorithm
    returns its "site for cookies":
 
-   1.  Return "worker"'s origin.
+   1.  Return worker's origin.
 
 5.3.  Ignoring Set-Cookie Header Fields
 
@@ -1284,20 +1282,20 @@ Table of Contents
    If the attribute-name case-insensitively matches the string
    "SameSite", the user agent MUST process the cookie-av as follows:
 
-   1.  Let "enforcement" be "Default".
+   1.  Let enforcement be "Default".
 
    2.  If cookie-av's attribute-value is a case-insensitive match for
-       "None", set "enforcement" to "None".
+       "None", set enforcement to "None".
 
    3.  If cookie-av's attribute-value is a case-insensitive match for
-       "Strict", set "enforcement" to "Strict".
+       "Strict", set enforcement to "Strict".
 
    4.  If cookie-av's attribute-value is a case-insensitive match for
-       "Lax", set "enforcement" to "Lax".
+       "Lax", set enforcement to "Lax".
 
    5.  Append an attribute to the cookie-attribute-list with an
        attribute-name of "SameSite" and an attribute-value of
-       "enforcement".
+       enforcement.
 
 5.4.7.1.  "Strict" and "Lax" enforcement
 
@@ -1306,7 +1304,7 @@ Table of Contents
    document context.  As discussed in Section 8.8.2, this might or might
    not be compatible with existing session management systems.  In the
    interests of providing a drop-in mechanism that mitigates the risk of
-   CSRF attacks, developers may set the "SameSite" attribute in a "Lax"
+   CSRF attacks, developers may set the SameSite attribute in a "Lax"
    enforcement mode that carves out an exception which sends same-site
    cookies along with cross-site requests if and only if they are top-
    level navigations which use a "safe" (in the [HTTPSEM] sense) HTTP
@@ -1316,7 +1314,7 @@ Table of Contents
    method of the current redirect hop.)
 
    Lax enforcement provides reasonable defense in depth against CSRF
-   attacks that rely on unsafe HTTP methods (like "POST"), but does not
+   attacks that rely on unsafe HTTP methods (like POST), but does not
    offer a robust defense against CSRF as a general category of attack:
 
    1.  Attackers can still pop up new windows or trigger top-level
@@ -1324,7 +1322,7 @@ Table of Contents
        described in Section 5.2.1), which is only a speedbump along the
        road to exploitation.
 
-   2.  Features like "<link rel='prerender'>" [prerendering] can be
+   2.  Features like <link rel='prerender'> [prerendering] can be
        exploited to create "same-site" requests without the risk of user
        detection.
 
@@ -1339,16 +1337,16 @@ Table of Contents
    cookies to be sent with a cross-site HTTP request if and only if it
    is a top-level request, regardless of request method.  That is, the
    "Lax-allowing-unsafe" enforcement mode waives the requirement for the
-   HTTP request's method to be "safe" in the "SameSite" enforcement step
+   HTTP request's method to be "safe" in the SameSite enforcement step
    of the retrieval algorithm in Section 5.6.3.  (All cookies,
-   regardless of "SameSite" enforcement mode, may be set for top-level
+   regardless of SameSite enforcement mode, may be set for top-level
    navigations, regardless of HTTP request method, as specified in
    Section 5.5.)
 
-   "Lax-allowing-unsafe" is not a distinct value of the "SameSite"
+   "Lax-allowing-unsafe" is not a distinct value of the SameSite
    attribute.  Rather, user agents MAY apply "Lax-allowing-unsafe"
    enforcement only to cookies that did not explicitly specify a
-   "SameSite" attribute (i.e., those whose same-site-flag was set to
+   SameSite attribute (i.e., those whose same-site-flag was set to
    "Default" by default).  To limit the scope of this compatibility
    mode, user agents which apply "Lax-allowing-unsafe" enforcement
    SHOULD restrict the enforcement to cookies which were created
@@ -1456,8 +1454,8 @@ Table of Contents
 
             1.  Ignore the cookie entirely and abort these steps.
 
-        NOTE: This step prevents "attacker.example" from disrupting the
-        integrity of "site.example" by setting a cookie with a Domain
+        NOTE: This step prevents attacker.example from disrupting the
+        integrity of site.example by setting a cookie with a Domain
         attribute of "example".
 
    9.   If the domain-attribute is non-empty:
@@ -1534,7 +1532,7 @@ Table of Contents
         attribute-list with an attribute-name of "SameSite".  Otherwise,
         set the cookie's same-site-flag to "Default".
 
-   17.  If the cookie's "same-site-flag" is not "None":
+   17.  If the cookie's same-site-flag is not "None":
 
         1.  If the cookie was received from a "non-HTTP" API, and the
             API was called from a browsing context's active document
@@ -1548,13 +1546,13 @@ Table of Contents
 
         3.  If the cookie was received from a request which is
             navigating a top-level browsing context [HTML] (e.g. if the
-            request's "reserved client" is either "null" or an
-            environment whose "target browsing context" is a top-level
-            browing context), skip the remaining substeps and continue
+            request's "reserved client" is either null or an environment
+            whose "target browsing context" is a top-level browing
+            context), skip the remaining substeps and continue
             processing the cookie.
 
             Note: Top-level navigations can create a cookie with any
-            "SameSite" value, even if the new cookie wouldn't have been
+            SameSite value, even if the new cookie wouldn't have been
             sent along with the request had it already existed prior to
             the navigation.
 
@@ -1578,7 +1576,7 @@ Table of Contents
         2.  The cookie's host-only-flag is true.
 
         3.  The cookie-attribute-list contains an attribute with an
-            attribute-name of "Path", and the cookie's path is "/".
+            attribute-name of "Path", and the cookie's path is /.
 
    21.  If the cookie store contains a cookie with the same name,
         domain, host-only-flag, and path as the newly-created cookie:
@@ -2093,10 +2091,10 @@ Table of Contents
 
    Servers can partially mitigate these attacks by encrypting and
    signing the contents of their cookies, or by naming the cookie with
-   the "__Secure-" prefix.  However, using cryptography does not
-   mitigate the issue completely because an attacker can replay a cookie
-   he or she received from the authentic site.example server in the
-   user's session, with unpredictable results.
+   the __Secure- prefix.  However, using cryptography does not mitigate
+   the issue completely because an attacker can replay a cookie he or
+   she received from the authentic site.example server in the user's
+   session, with unpredictable results.
 
    Finally, an attacker might be able to force the user agent to delete
    cookies by storing a large number of cookies.  Once the user agent
@@ -2131,46 +2129,45 @@ Table of Contents
 
 8.8.2.  Top-level Navigations
 
-   Setting the "SameSite" attribute in "strict" mode provides robust
+   Setting the SameSite attribute in "strict" mode provides robust
    defense in depth against CSRF attacks, but has the potential to
    confuse users unless sites' developers carefully ensure that their
    cookie-based session management systems deal reasonably well with
    top-level navigations.
 
    Consider the scenario in which a user reads their email at MegaCorp
-   Inc's webmail provider "https://site.example/".  They might expect
-   that clicking on an emailed link to "https://projects.example/secret/
-   project" would show them the secret project that they're authorized
-   to see, but if "https://projects.example" has marked their session
-   cookies as "SameSite=Strict", then this cross-site navigation won't
-   send them along with the request. "https://projects.example" will
-   render a 404 error to avoid leaking secret information, and the user
-   will be quite confused.
+   Inc's webmail provider https://site.example/. They might expect that
+   clicking on an emailed link to https://projects.example/secret/
+   project would show them the secret project that they're authorized to
+   see, but if https://projects.example has marked their session cookies
+   as SameSite=Strict, then this cross-site navigation won't send them
+   along with the request. https://projects.example will render a 404
+   error to avoid leaking secret information, and the user will be quite
+   confused.
 
    Developers can avoid this confusion by adopting a session management
    system that relies on not one, but two cookies: one conceptually
    granting "read" access, another granting "write" access.  The latter
-   could be marked as "SameSite=Strict", and its absence would prompt a
+   could be marked as SameSite=Strict, and its absence would prompt a
    reauthentication step before executing any non-idempotent action.
-   The former could be marked as "SameSite=Lax", in order to allow users
-   access to data via top-level navigation, or "SameSite=None", to
-   permit access in all contexts (including cross-site embedded
-   contexts).
+   The former could be marked as SameSite=Lax, in order to allow users
+   access to data via top-level navigation, or SameSite=None, to permit
+   access in all contexts (including cross-site embedded contexts).
 
 8.8.3.  Mashups and Widgets
 
-   The "Lax" and "Strict" values for the "SameSite" attribute are
+   The Lax and Strict values for the SameSite attribute are
    inappropriate for some important use-cases.  In particular, note that
    content intended for embedding in cross-site contexts (social
    networking widgets or commenting services, for instance) will not
    have access to same-site cookies.  Cookies which are required in
-   these situations should be marked with "SameSite=None" to allow
-   access in cross-site contexts.
+   these situations should be marked with SameSite=None to allow access
+   in cross-site contexts.
 
    Likewise, some forms of Single-Sign-On might require cookie-based
    authentication in a cross-site context; these mechanisms will not
    function as intended with same-site cookies and will also require
-   "SameSite=None".
+   SameSite=None.
 
 8.8.4.  Server-controlled
 
@@ -2194,29 +2191,29 @@ Table of Contents
    context's active document is precisely the document being reloaded.
 
    This special handling of reloads triggered through a user interface
-   element avoids sending "SameSite" cookies on user-initiated reloads
-   if they were withheld on the original navigation (i.e., if the
-   initial navigation were cross-site).  If the reload navigation were
-   instead considered same-site, and sent all the initially withheld
-   "SameSite" cookies, the security benefits of withholding the cookies
-   in the first place would be nullified.  This is especially important
-   given that the absence of "SameSite" cookies withheld on a cross-site
+   element avoids sending SameSite cookies on user-initiated reloads if
+   they were withheld on the original navigation (i.e., if the initial
+   navigation were cross-site).  If the reload navigation were instead
+   considered same-site, and sent all the initially withheld SameSite
+   cookies, the security benefits of withholding the cookies in the
+   first place would be nullified.  This is especially important given
+   that the absence of SameSite cookies withheld on a cross-site
    navigation request may lead to visible site breakage, prompting the
    user to trigger a reload.
 
    For example, suppose the user clicks on a link from
-   "https://attacker.example/" to "https://victim.example/".  This is a
-   cross-site request, so "SameSite=Strict" cookies are withheld.
-   Suppose this causes "https://victim.example/" to appear broken,
-   because the site only displays its sensitive content if a particular
-   "SameSite" cookie is present in the request.  The user, frustrated by
-   the unexpectedly broken site, presses refresh on their browser's
-   toolbar.  To now consider the reload request same-site and send the
-   initially withheld "SameSite" cookie would defeat the purpose of
-   withholding it in the first place, as the reload navigation triggered
-   through the user interface may replay the original (potentially
-   malicious) request.  Thus, the reload request should be considered
-   cross-site, like the request that initially navigated to the page.
+   https://attacker.example/ to https://victim.example/. This is a
+   cross-site request, so SameSite=Strict cookies are withheld.  Suppose
+   this causes https://victim.example/ to appear broken, because the
+   site only displays its sensitive content if a particular SameSite
+   cookie is present in the request.  The user, frustrated by the
+   unexpectedly broken site, presses refresh on their browser's toolbar.
+   To now consider the reload request same-site and send the initially
+   withheld SameSite cookie would defeat the purpose of withholding it
+   in the first place, as the reload navigation triggered through the
+   user interface may replay the original (potentially malicious)
+   request.  Thus, the reload request should be considered cross-site,
+   like the request that initially navigated to the page.
 
 8.8.6.  Top-level requests with "unsafe" methods
 
@@ -2225,11 +2222,11 @@ Table of Contents
    a top-level navigation with a "safe" HTTP method.  Implementation
    experience shows that this is difficult to apply as the default
    behavior, as some sites may rely on cookies not explicitly specifying
-   a "SameSite" attribute being included on top-level cross-site
-   requests with "unsafe" HTTP methods (as was the case prior to the
-   introduction of the "SameSite" attribute).
+   a SameSite attribute being included on top-level cross-site requests
+   with "unsafe" HTTP methods (as was the case prior to the introduction
+   of the SameSite attribute).
 
-   For example, a login flow may involve a cross-site top-level "POST"
+   For example, a login flow may involve a cross-site top-level POST
    request to an endpoint which expects a cookie with login information.
    For such a cookie, "Lax" enforcement is not appropriate, as it would
    cause the cookie to be excluded due to the unsafe HTTP request
@@ -2296,7 +2293,7 @@ Table of Contents
 
    New registrations happen on a "RFC Required" basis (see Section 4.7
    of [RFC8126]).  The attribute to be registered MUST match the
-   "extension-av" syntax defined in Section 4.1.1.  Note that attribute
+   extension-av syntax defined in Section 4.1.1.  Note that attribute
    names are generally defined in CamelCase, but technically accepted
    case-insensitively.
 
@@ -2509,13 +2506,13 @@ A.2.  draft-ietf-httpbis-rfc6265bis-01
       -  https://github.com/httpwg/http-extensions/issues/246
          (https://github.com/httpwg/http-extensions/issues/246)
 
-   *  Addresses errata 3444 by updating the "path-value" and "extension-
-      av" grammar, errata 4148 by updating the "day-of-month", "year",
-      and "time" grammar, and errata 3663 by adding the requested note.
+   *  Addresses errata 3444 by updating the path-value and extension-av
+      grammar, errata 4148 by updating the day-of-month, year, and time
+      grammar, and errata 3663 by adding the requested note.
       https://www.rfc-editor.org/errata_search.php?rfc=6265
       (https://www.rfc-editor.org/errata_search.php?rfc=6265)
 
-   *  Dropped "Cookie2" and "Set-Cookie2" from the IANA Considerations
+   *  Dropped Cookie2 and Set-Cookie2 from the IANA Considerations
       section: https://github.com/httpwg/http-extensions/issues/247
       (https://github.com/httpwg/http-extensions/issues/247)
 
@@ -2525,14 +2522,14 @@ A.2.  draft-ietf-httpbis-rfc6265bis-01
       true.
 
    *  Merged the recommendations from
-      [I-D.ietf-httpbis-cookie-prefixes], adding "__Secure-" and
-      "__Host-" cookie name prefix processing instructions.
+      [I-D.ietf-httpbis-cookie-prefixes], adding __Secure- and __Host-
+      cookie name prefix processing instructions.
 
 A.3.  draft-ietf-httpbis-rfc6265bis-02
 
    *  Merged the recommendations from
       [I-D.ietf-httpbis-cookie-same-site], adding support for the
-      "SameSite" attribute.
+      SameSite attribute.
 
    *  Closed a number of editorial bugs:
 
@@ -2544,7 +2541,7 @@ A.3.  draft-ietf-httpbis-rfc6265bis-02
          https://github.com/httpwg/http-extensions/issues/204
          (https://github.com/httpwg/http-extensions/issues/204)
 
-      -  Clarified that the "__Host-" prefix requires an explicit "Path"
+      -  Clarified that the __Host- prefix requires an explicit Path
          attribute: https://github.com/httpwg/http-extensions/issues/222
          (https://github.com/httpwg/http-extensions/issues/222)
 
@@ -2570,7 +2567,7 @@ A.4.  draft-ietf-httpbis-rfc6265bis-03
       (https://github.com/httpwg/http-extensions/issues/389)
 
    *  Reflect widespread implementation practice of including a cookie's
-      "host-only-flag" when calculating its uniqueness:
+      host-only-flag when calculating its uniqueness:
       https://github.com/httpwg/http-extensions/issues/199
       (https://github.com/httpwg/http-extensions/issues/199)
 
@@ -2580,19 +2577,19 @@ A.4.  draft-ietf-httpbis-rfc6265bis-03
 
 A.5.  draft-ietf-httpbis-rfc6265bis-04
 
-   *  Allow "SameSite" cookies to be set for all top-level navigations.
+   *  Allow SameSite cookies to be set for all top-level navigations.
       https://github.com/httpwg/http-extensions/issues/594
       (https://github.com/httpwg/http-extensions/issues/594)
 
-   *  Treat "Set-Cookie: token" as creating the cookie "("", "token")":
+   *  Treat Set-Cookie: token as creating the cookie ("", "token"):
       https://github.com/httpwg/http-extensions/issues/159
       (https://github.com/httpwg/http-extensions/issues/159)
 
-   *  Reject cookies with neither name nor value (e.g.  "Set-Cookie: ="
-      and "Set-Cookie:": https://github.com/httpwg/http-extensions/
+   *  Reject cookies with neither name nor value (e.g.  Set-Cookie: =
+      and Set-Cookie:: https://github.com/httpwg/http-extensions/
       issues/159 (https://github.com/httpwg/http-extensions/issues/159)
 
-   *  Clarified behavior of multiple "SameSite" attributes in a cookie
+   *  Clarified behavior of multiple SameSite attributes in a cookie
       string: https://github.com/httpwg/http-extensions/issues/901
       (https://github.com/httpwg/http-extensions/issues/901)
 
@@ -2619,8 +2616,8 @@ A.7.  draft-ietf-httpbis-rfc6265bis-06
       https://github.com/httpwg/http-extensions/pull/1060
       (https://github.com/httpwg/http-extensions/pull/1060).
 
-   *  Tweaks to ABNF for "cookie-pair" and the "Cookie" header
-      production: https://github.com/httpwg/http-extensions/issues/1074
+   *  Tweaks to ABNF for cookie-pair and the Cookie header production:
+      https://github.com/httpwg/http-extensions/issues/1074
       (https://github.com/httpwg/http-extensions/issues/1074),
       https://github.com/httpwg/http-extensions/issues/1119
       (https://github.com/httpwg/http-extensions/issues/1119).
@@ -2642,10 +2639,9 @@ A.8.  draft-ietf-httpbis-rfc6265bis-07
       https://github.com/httpwg/http-extensions/issues/1234
       (https://github.com/httpwg/http-extensions/issues/1234).
 
-   *  Add a default enforcement value to the "same-site-flag",
-      equivalent to "SameSite=Lax": https://github.com/httpwg/http-
-      extensions/pull/1325 (https://github.com/httpwg/http-extensions/
-      pull/1325).
+   *  Add a default enforcement value to the same-site-flag, equivalent
+      to "SameSite=Lax": https://github.com/httpwg/http-extensions/
+      pull/1325 (https://github.com/httpwg/http-extensions/pull/1325).
 
    *  Require a Secure attribute for "SameSite=None":
       https://github.com/httpwg/http-extensions/pull/1323

@@ -10,11 +10,11 @@
 <meta content="
        This document defines the Proxy-Status HTTP field to convey the details of intermediary response handling, including generated errors. 
     " name="description">
-<meta content="xml2rfc 3.9.1" name="generator">
+<meta content="xml2rfc 3.10.0" name="generator">
 <meta content="Internet-Draft" name="keyword">
 <meta content="draft-ietf-httpbis-proxy-status" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.9.1
+  xml2rfc 3.10.0
     Python 3.9.5
     appdirs 1.4.4
     ConfigArgParse 1.3
@@ -1022,7 +1022,7 @@ address div.right {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Nottingham &amp; Sikora</td>
-<td class="center">Expires 26 March 2022</td>
+<td class="center">Expires 28 March 2022</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1035,12 +1035,12 @@ address div.right {
 <dd class="internet-draft">draft-ietf-httpbis-proxy-status</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2021-09-22" class="published">22 September 2021</time>
+<time datetime="2021-09-24" class="published">24 September 2021</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2022-03-26">26 March 2022</time></dd>
+<dd class="expires"><time datetime="2022-03-28">28 March 2022</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1086,7 +1086,7 @@ address div.right {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 26 March 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 28 March 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1117,140 +1117,140 @@ address div.right {
 <nav class="toc"><ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a></p>
-<ul class="ulBare toc compact ulEmpty">
-<li class="ulBare toc compact ulEmpty" id="section-toc.1-1.1.2.1">
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.1">
                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="xref">1.1</a>.  <a href="#name-notational-conventions" class="xref">Notational Conventions</a></p>
 </li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-the-proxy-status-http-field" class="xref">The Proxy-Status HTTP Field</a></p>
-<ul class="ulBare toc compact ulEmpty">
-<li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.1">
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1">
                 <p id="section-toc.1-1.2.2.1.1"><a href="#section-2.1" class="xref">2.1</a>.  <a href="#name-proxy-status-parameters" class="xref">Proxy-Status Parameters</a></p>
-<ul class="ulBare toc compact ulEmpty">
-<li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.1.2.1">
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1.2.1">
                     <p id="section-toc.1-1.2.2.1.2.1.1" class="keepWithNext"><a href="#section-2.1.1" class="xref">2.1.1</a>.  <a href="#name-error" class="xref">error</a></p>
 </li>
-                  <li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.1.2.2">
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1.2.2">
                     <p id="section-toc.1-1.2.2.1.2.2.1"><a href="#section-2.1.2" class="xref">2.1.2</a>.  <a href="#name-next-hop" class="xref">next-hop</a></p>
 </li>
-                  <li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.1.2.3">
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1.2.3">
                     <p id="section-toc.1-1.2.2.1.2.3.1"><a href="#section-2.1.3" class="xref">2.1.3</a>.  <a href="#name-next-protocol" class="xref">next-protocol</a></p>
 </li>
-                  <li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.1.2.4">
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1.2.4">
                     <p id="section-toc.1-1.2.2.1.2.4.1"><a href="#section-2.1.4" class="xref">2.1.4</a>.  <a href="#name-received-status" class="xref">received-status</a></p>
 </li>
-                  <li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.1.2.5">
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1.2.5">
                     <p id="section-toc.1-1.2.2.1.2.5.1"><a href="#section-2.1.5" class="xref">2.1.5</a>.  <a href="#name-details" class="xref">details</a></p>
 </li>
                 </ul>
 </li>
-              <li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.2">
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2">
                 <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="xref">2.2</a>.  <a href="#name-defining-new-proxy-status-p" class="xref">Defining New Proxy-Status Parameters</a></p>
 </li>
-              <li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.3">
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3">
                 <p id="section-toc.1-1.2.2.3.1"><a href="#section-2.3" class="xref">2.3</a>.  <a href="#name-proxy-error-types" class="xref">Proxy Error Types</a></p>
-<ul class="ulBare toc compact ulEmpty">
-<li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.3.2.1">
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3.2.1">
                     <p id="section-toc.1-1.2.2.3.2.1.1"><a href="#section-2.3.1" class="xref">2.3.1</a>.  <a href="#name-dns-timeout" class="xref">DNS Timeout</a></p>
 </li>
-                  <li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.3.2.2">
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3.2.2">
                     <p id="section-toc.1-1.2.2.3.2.2.1"><a href="#section-2.3.2" class="xref">2.3.2</a>.  <a href="#name-dns-error" class="xref">DNS Error</a></p>
 </li>
-                  <li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.3.2.3">
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3.2.3">
                     <p id="section-toc.1-1.2.2.3.2.3.1"><a href="#section-2.3.3" class="xref">2.3.3</a>.  <a href="#name-destination-not-found" class="xref">Destination Not Found</a></p>
 </li>
-                  <li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.3.2.4">
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3.2.4">
                     <p id="section-toc.1-1.2.2.3.2.4.1"><a href="#section-2.3.4" class="xref">2.3.4</a>.  <a href="#name-destination-unavailable" class="xref">Destination Unavailable</a></p>
 </li>
-                  <li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.3.2.5">
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3.2.5">
                     <p id="section-toc.1-1.2.2.3.2.5.1"><a href="#section-2.3.5" class="xref">2.3.5</a>.  <a href="#name-destination-ip-prohibited" class="xref">Destination IP Prohibited</a></p>
 </li>
-                  <li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.3.2.6">
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3.2.6">
                     <p id="section-toc.1-1.2.2.3.2.6.1"><a href="#section-2.3.6" class="xref">2.3.6</a>.  <a href="#name-destination-ip-unroutable" class="xref">Destination IP Unroutable</a></p>
 </li>
-                  <li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.3.2.7">
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3.2.7">
                     <p id="section-toc.1-1.2.2.3.2.7.1"><a href="#section-2.3.7" class="xref">2.3.7</a>.  <a href="#name-connection-refused" class="xref">Connection Refused</a></p>
 </li>
-                  <li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.3.2.8">
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3.2.8">
                     <p id="section-toc.1-1.2.2.3.2.8.1"><a href="#section-2.3.8" class="xref">2.3.8</a>.  <a href="#name-connection-terminated" class="xref">Connection Terminated</a></p>
 </li>
-                  <li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.3.2.9">
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3.2.9">
                     <p id="section-toc.1-1.2.2.3.2.9.1"><a href="#section-2.3.9" class="xref">2.3.9</a>.  <a href="#name-connection-timeout" class="xref">Connection Timeout</a></p>
 </li>
-                  <li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.3.2.10">
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3.2.10">
                     <p id="section-toc.1-1.2.2.3.2.10.1"><a href="#section-2.3.10" class="xref">2.3.10</a>. <a href="#name-connection-read-timeout" class="xref">Connection Read Timeout</a></p>
 </li>
-                  <li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.3.2.11">
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3.2.11">
                     <p id="section-toc.1-1.2.2.3.2.11.1"><a href="#section-2.3.11" class="xref">2.3.11</a>. <a href="#name-connection-write-timeout" class="xref">Connection Write Timeout</a></p>
 </li>
-                  <li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.3.2.12">
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3.2.12">
                     <p id="section-toc.1-1.2.2.3.2.12.1"><a href="#section-2.3.12" class="xref">2.3.12</a>. <a href="#name-connection-limit-reached" class="xref">Connection Limit Reached</a></p>
 </li>
-                  <li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.3.2.13">
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3.2.13">
                     <p id="section-toc.1-1.2.2.3.2.13.1"><a href="#section-2.3.13" class="xref">2.3.13</a>. <a href="#name-tls-protocol-error" class="xref">TLS Protocol Error</a></p>
 </li>
-                  <li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.3.2.14">
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3.2.14">
                     <p id="section-toc.1-1.2.2.3.2.14.1"><a href="#section-2.3.14" class="xref">2.3.14</a>. <a href="#name-tls-certificate-error" class="xref">TLS Certificate Error</a></p>
 </li>
-                  <li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.3.2.15">
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3.2.15">
                     <p id="section-toc.1-1.2.2.3.2.15.1"><a href="#section-2.3.15" class="xref">2.3.15</a>. <a href="#name-tls-alert-received" class="xref">TLS Alert Received</a></p>
 </li>
-                  <li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.3.2.16">
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3.2.16">
                     <p id="section-toc.1-1.2.2.3.2.16.1"><a href="#section-2.3.16" class="xref">2.3.16</a>. <a href="#name-http-request-error" class="xref">HTTP Request Error</a></p>
 </li>
-                  <li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.3.2.17">
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3.2.17">
                     <p id="section-toc.1-1.2.2.3.2.17.1"><a href="#section-2.3.17" class="xref">2.3.17</a>. <a href="#name-http-request-denied" class="xref">HTTP Request Denied</a></p>
 </li>
-                  <li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.3.2.18">
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3.2.18">
                     <p id="section-toc.1-1.2.2.3.2.18.1"><a href="#section-2.3.18" class="xref">2.3.18</a>. <a href="#name-http-incomplete-response" class="xref">HTTP Incomplete Response</a></p>
 </li>
-                  <li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.3.2.19">
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3.2.19">
                     <p id="section-toc.1-1.2.2.3.2.19.1"><a href="#section-2.3.19" class="xref">2.3.19</a>. <a href="#name-http-response-header-sectio" class="xref">HTTP Response Header Section Too Large</a></p>
 </li>
-                  <li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.3.2.20">
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3.2.20">
                     <p id="section-toc.1-1.2.2.3.2.20.1"><a href="#section-2.3.20" class="xref">2.3.20</a>. <a href="#name-http-response-header-field-" class="xref">HTTP Response Header Field Line Too Large</a></p>
 </li>
-                  <li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.3.2.21">
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3.2.21">
                     <p id="section-toc.1-1.2.2.3.2.21.1"><a href="#section-2.3.21" class="xref">2.3.21</a>. <a href="#name-http-response-body-too-larg" class="xref">HTTP Response Body Too Large</a></p>
 </li>
-                  <li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.3.2.22">
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3.2.22">
                     <p id="section-toc.1-1.2.2.3.2.22.1"><a href="#section-2.3.22" class="xref">2.3.22</a>. <a href="#name-http-response-trailer-secti" class="xref">HTTP Response Trailer Section Too Large</a></p>
 </li>
-                  <li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.3.2.23">
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3.2.23">
                     <p id="section-toc.1-1.2.2.3.2.23.1"><a href="#section-2.3.23" class="xref">2.3.23</a>. <a href="#name-http-response-trailer-field" class="xref">HTTP Response Trailer Field Line Too Large</a></p>
 </li>
-                  <li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.3.2.24">
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3.2.24">
                     <p id="section-toc.1-1.2.2.3.2.24.1"><a href="#section-2.3.24" class="xref">2.3.24</a>. <a href="#name-http-response-transfer-codi" class="xref">HTTP Response Transfer-Coding Error</a></p>
 </li>
-                  <li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.3.2.25">
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3.2.25">
                     <p id="section-toc.1-1.2.2.3.2.25.1"><a href="#section-2.3.25" class="xref">2.3.25</a>. <a href="#name-http-response-content-codin" class="xref">HTTP Response Content-Coding Error</a></p>
 </li>
-                  <li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.3.2.26">
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3.2.26">
                     <p id="section-toc.1-1.2.2.3.2.26.1"><a href="#section-2.3.26" class="xref">2.3.26</a>. <a href="#name-http-response-timeout" class="xref">HTTP Response Timeout</a></p>
 </li>
-                  <li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.3.2.27">
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3.2.27">
                     <p id="section-toc.1-1.2.2.3.2.27.1"><a href="#section-2.3.27" class="xref">2.3.27</a>. <a href="#name-http-upgrade-failed" class="xref">HTTP Upgrade Failed</a></p>
 </li>
-                  <li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.3.2.28">
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3.2.28">
                     <p id="section-toc.1-1.2.2.3.2.28.1"><a href="#section-2.3.28" class="xref">2.3.28</a>. <a href="#name-http-protocol-error" class="xref">HTTP Protocol Error</a></p>
 </li>
-                  <li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.3.2.29">
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3.2.29">
                     <p id="section-toc.1-1.2.2.3.2.29.1"><a href="#section-2.3.29" class="xref">2.3.29</a>. <a href="#name-proxy-internal-response" class="xref">Proxy Internal Response</a></p>
 </li>
-                  <li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.3.2.30">
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3.2.30">
                     <p id="section-toc.1-1.2.2.3.2.30.1"><a href="#section-2.3.30" class="xref">2.3.30</a>. <a href="#name-proxy-internal-error" class="xref">Proxy Internal Error</a></p>
 </li>
-                  <li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.3.2.31">
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3.2.31">
                     <p id="section-toc.1-1.2.2.3.2.31.1"><a href="#section-2.3.31" class="xref">2.3.31</a>. <a href="#name-proxy-configuration-error" class="xref">Proxy Configuration Error</a></p>
 </li>
-                  <li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.3.2.32">
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3.2.32">
                     <p id="section-toc.1-1.2.2.3.2.32.1"><a href="#section-2.3.32" class="xref">2.3.32</a>. <a href="#name-proxy-loop-detected" class="xref">Proxy Loop Detected</a></p>
 </li>
                 </ul>
 </li>
-              <li class="ulBare toc compact ulEmpty" id="section-toc.1-1.2.2.4">
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.4">
                 <p id="section-toc.1-1.2.2.4.1"><a href="#section-2.4" class="xref">2.4</a>.  <a href="#name-defining-new-proxy-error-ty" class="xref">Defining New Proxy Error Types</a></p>
 </li>
             </ul>
@@ -1263,11 +1263,11 @@ address div.right {
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-references" class="xref">References</a></p>
-<ul class="ulBare toc compact ulEmpty">
-<li class="ulBare toc compact ulEmpty" id="section-toc.1-1.5.2.1">
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="xref">5.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a></p>
 </li>
-              <li class="ulBare toc compact ulEmpty" id="section-toc.1-1.5.2.2">
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="xref">5.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a></p>
 </li>
             </ul>
@@ -1308,14 +1308,14 @@ address div.right {
 <p id="section-2-1">The Proxy-Status HTTP response field allows an intermediary to convey additional information about its handling of a response and its associated request. The syntax of this header field conforms to <span>[<a href="#STRUCTURED-FIELDS" class="xref">STRUCTURED-FIELDS</a>]</span>.<a href="#section-2-1" class="pilcrow">¶</a></p>
 <p id="section-2-2">It is a List (<span>[<a href="#STRUCTURED-FIELDS" class="xref">STRUCTURED-FIELDS</a>], <a href="https://rfc-editor.org/rfc/rfc8941#section-3.1" class="relref">Section 3.1</a></span>):<a href="#section-2-2" class="pilcrow">¶</a></p>
 <div id="section-2-3">
-<pre class="sourcecode lang-abnf">
+<pre class="lang-abnf sourcecode">
 Proxy-Status   = sf-list
 </pre><a href="#section-2-3" class="pilcrow">¶</a>
 </div>
 <p id="section-2-4">Each member of the list represents an intermediary that has handled the response. The first member of the list represents the intermediary closest to the origin server, and the last member of the list represents the intermediary closest to the user agent.<a href="#section-2-4" class="pilcrow">¶</a></p>
 <p id="section-2-5">For example:<a href="#section-2-5" class="pilcrow">¶</a></p>
 <div id="section-2-6">
-<pre class="sourcecode lang-http-message">
+<pre class="lang-http-message sourcecode">
 Proxy-Status: revproxy1.example.net, ExampleCDN
 </pre><a href="#section-2-6" class="pilcrow">¶</a>
 </div>
@@ -1329,19 +1329,19 @@ Proxy-Status: revproxy1.example.net, ExampleCDN
 <p id="section-2-14">To allow recipients to reconstruct the relative ordering of Proxy-Status members conveyed in trailer fields with those conveyed in header fields, an intermediary MUST NOT send Proxy-Status as a trailer field unless it has also generated a Proxy-Status header field with the same member (although potentially different parameters) in that message.<a href="#section-2-14" class="pilcrow">¶</a></p>
 <p id="section-2-15">For example, a proxy identified as 'ThisProxy' that receives a response bearing a header field:<a href="#section-2-15" class="pilcrow">¶</a></p>
 <div id="section-2-16">
-<pre class="sourcecode lang-http-message">
+<pre class="lang-http-message sourcecode">
 Proxy-Status: SomeOtherProxy
 </pre><a href="#section-2-16" class="pilcrow">¶</a>
 </div>
 <p id="section-2-17">would add its own entry to the header field:<a href="#section-2-17" class="pilcrow">¶</a></p>
 <div id="section-2-18">
-<pre class="sourcecode lang-http-message">
+<pre class="lang-http-message sourcecode">
 Proxy-Status: SomeOtherProxy, ThisProxy
 </pre><a href="#section-2-18" class="pilcrow">¶</a>
 </div>
 <p id="section-2-19">thus allowing it to append a trailer field:<a href="#section-2-19" class="pilcrow">¶</a></p>
 <div id="section-2-20">
-<pre class="sourcecode lang-http-message">
+<pre class="lang-http-message sourcecode">
 Proxy-Status: ThisProxy; error=read_timeout
 </pre><a href="#section-2-20" class="pilcrow">¶</a>
 </div>
@@ -1381,7 +1381,7 @@ origin server or some other inbound server. For example, if the forward connecti
 <p id="section-2.1.1-5"><a href="#error-types" class="xref">Section 2.3</a> lists the Proxy Error Types defined in this document; new ones can be defined using the procedure outlined in <a href="#register-error" class="xref">Section 2.4</a>.<a href="#section-2.1.1-5" class="pilcrow">¶</a></p>
 <p id="section-2.1.1-6">For example:<a href="#section-2.1.1-6" class="pilcrow">¶</a></p>
 <div id="section-2.1.1-7">
-<pre class="sourcecode lang-http-message">
+<pre class="lang-http-message sourcecode">
 HTTP/1.1 504 Gateway Timeout
 Proxy-Status: ExampleCDN; error=connection_timeout
 </pre><a href="#section-2.1.1-7" class="pilcrow">¶</a>
@@ -1389,7 +1389,7 @@ Proxy-Status: ExampleCDN; error=connection_timeout
 <p id="section-2.1.1-8">indicates that this 504 response was generated by ExampleCDN, due to a connection timeout when going forward.<a href="#section-2.1.1-8" class="pilcrow">¶</a></p>
 <p id="section-2.1.1-9">Or:<a href="#section-2.1.1-9" class="pilcrow">¶</a></p>
 <div id="section-2.1.1-10">
-<pre class="sourcecode lang-http-message">
+<pre class="lang-http-message sourcecode">
 HTTP/1.1 429 Too Many Requests
 Proxy-Status: r34.example.net; error=http_request_error, ExampleCDN
 </pre><a href="#section-2.1.1-10" class="pilcrow">¶</a>
@@ -1408,7 +1408,7 @@ Proxy-Status: r34.example.net; error=http_request_error, ExampleCDN
 <p id="section-2.1.2-1">The <code>next-hop</code> parameter's value is an sf-string or sf-token that identifies the intermediary or origin server selected (and used, if contacted) for this response. It might be a hostname, IP address, or alias.<a href="#section-2.1.2-1" class="pilcrow">¶</a></p>
 <p id="section-2.1.2-2">For example:<a href="#section-2.1.2-2" class="pilcrow">¶</a></p>
 <div id="section-2.1.2-3">
-<pre class="sourcecode lang-http-message">
+<pre class="lang-http-message sourcecode">
 Proxy-Status: cdn.example.org; next-hop=backend.example.org:8001
 </pre><a href="#section-2.1.2-3" class="pilcrow">¶</a>
 </div>
@@ -1424,7 +1424,7 @@ Proxy-Status: cdn.example.org; next-hop=backend.example.org:8001
 <p id="section-2.1.3-2">The value MUST be either an sf-token or sf-binary, representing a TLS Application-Layer Protocol Negotiation (ALPN) Protocol ID (see <a href="https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids">https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids</a>). If the protocol identifier is able to be expressed as an sf-token using ASCII encoding, that form MUST be used.<a href="#section-2.1.3-2" class="pilcrow">¶</a></p>
 <p id="section-2.1.3-3">For example:<a href="#section-2.1.3-3" class="pilcrow">¶</a></p>
 <div id="section-2.1.3-4">
-<pre class="sourcecode lang-http-message">
+<pre class="lang-http-message sourcecode">
 Proxy-Status: "proxy.example.org"; next-protocol=h2
 </pre><a href="#section-2.1.3-4" class="pilcrow">¶</a>
 </div>
@@ -1440,7 +1440,7 @@ Proxy-Status: "proxy.example.org"; next-protocol=h2
 <p id="section-2.1.4-2">The value MUST be an sf-integer.<a href="#section-2.1.4-2" class="pilcrow">¶</a></p>
 <p id="section-2.1.4-3">For example:<a href="#section-2.1.4-3" class="pilcrow">¶</a></p>
 <div id="section-2.1.4-4">
-<pre class="sourcecode lang-http-message">
+<pre class="lang-http-message sourcecode">
 Proxy-Status: ExampleCDN; received-status=200
 </pre><a href="#section-2.1.4-4" class="pilcrow">¶</a>
 </div>
@@ -1454,7 +1454,7 @@ Proxy-Status: ExampleCDN; received-status=200
 <p id="section-2.1.5-1">The <code>details</code> parameter's value is an sf-string containing additional information not captured anywhere else. This can include implementation-specific or deployment-specific information.<a href="#section-2.1.5-1" class="pilcrow">¶</a></p>
 <p id="section-2.1.5-2">For example:<a href="#section-2.1.5-2" class="pilcrow">¶</a></p>
 <div id="section-2.1.5-3">
-<pre class="sourcecode lang-http-message">
+<pre class="lang-http-message sourcecode">
 Proxy-Status: proxy.example.net; error="http_protocol_error";
               details="Malformed response header: space before colon"
 </pre><a href="#section-2.1.5-3" class="pilcrow">¶</a>
